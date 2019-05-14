@@ -7,7 +7,9 @@ from PIL import Image, ImageDraw
 import time
 import RPi.GPIO as GPIO
 import datetime
-
+import subprocess
+import sys
+#Apps Resources
 #TrackBall
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -344,7 +346,9 @@ def checkButton(BContext):
 		DrawScreen(Canvas, AppScrn, AppScrnSel, len(AppScrnSel))
 		Context = "Apps"
 		ScreenContext = AppScrn
-		ScreenSelectContext = AppScrnSel   
+		ScreenSelectContext = AppScrnSel
+	elif(BContext == Camera):
+		subprocess.Popen([sys.executable, 'CameraAPP0512.py'], shell = True)
 	global Trackballindex
 	Trackballindex = 0
 
